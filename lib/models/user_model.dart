@@ -1,3 +1,5 @@
+// Model data user (akun login)
+// Digunakan untuk menyimpan username dan password
 class UserModel {
   final int? id;
   final String username;
@@ -5,6 +7,7 @@ class UserModel {
 
   UserModel({this.id, required this.username, required this.password});
 
+  // Convert objek ke Map untuk disimpan ke SQLite
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -13,6 +16,7 @@ class UserModel {
     };
   }
 
+  // Convert dari Map SQLite ke objek UserModel
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
       id: map['id'],

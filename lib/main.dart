@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:todolist_ukk/models/user_model.dart';
-import 'package:todolist_ukk/screens/login_screen.dart';
-import 'package:todolist_ukk/services/db_service.dart';
-
+import 'package:todolist_ukk/screens/splash_screen.dart';
+import 'screens/login_screen.dart';
+import 'services/db_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await DBService.initDb();
-  await DBService.registerUser(UserModel(username: "admin", password: "admin"));
-
+  await DBService.initDb(); // Pastikan DB sudah siap
   runApp(const MyApp());
 }
 
@@ -18,9 +15,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Todo',
       debugShowCheckedModeBanner: false,
-      home: const LoginScreen(),
+      title: 'Doto',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const SplashScreen(), // <-- ganti jadi SplashScreen
     );
   }
 }
